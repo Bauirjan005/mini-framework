@@ -1,250 +1,184 @@
-/* ELITE MINIMALISM STYLE */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@100;200;300;400&display=swap');
+/* Google Fonts арқылы заманауи шрифт қосу */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    /* Цветовая палитра: Глубокий обсидиан и Платина */
-    --bg-main: #0a0b0d;
-    --card-bg: rgba(15, 17, 22, 0.98);
-    --accent-color: #e2e2e2;
-    /* Платина */
-    --accent-soft: rgba(226, 226, 226, 0.05);
-    --accent-border: rgba(226, 226, 226, 0.12);
-
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.4);
-
-    --luxury-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9);
-    --transition-royal: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Түстер палитрасы - Скромный & Muted */
+    --bg-color: #f9fafb;        /* Өте ақшыл сұр фон */
+    --text-main: #1f2937;      /* Қою сұр мәтін (қара емес) */
+    --text-muted: #6b7280;     /* Шаң басқан сұр мәтін */
+    --accent-color: #6366f1;   /* Сабырлы көк-күлгін */
+    --border-color: #e5e7eb;   /* Нәзік шекара түсі */
+    --card-bg: #ffffff;        /* Ақ блоктар */
+    --success: #10b981;        /* Орындалған тапсырма үшін жасыл */
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-    /* Тонкое атмосферное свечение на фоне */
-    background-image:
-        radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+    padding-top: 100px;
 }
 
-#app {
+/* Негізгі контейнер */
+.todo-app {
     width: 100%;
     max-width: 550px;
-    padding: 20px;
-}
-
-/* Основная карточка приложения */
-.todo-app {
     background: var(--card-bg);
-    border: 1px solid var(--accent-border);
-    border-radius: 0;
-    /* Острые углы выглядят дороже и строже */
-    box-shadow: var(--luxury-shadow);
-    backdrop-filter: blur(30px);
-    position: relative;
-    padding: 70px 50px;
-    animation: luxuryFadeIn 1.5s ease-out;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Өте жұмсақ көлеңке */
+    overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
-@keyframes luxuryFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Декоративная линия сверху */
-.todo-app::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 1px;
-    background: var(--accent-color);
-}
-
-header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
+/* Бастапқы тақырып */
+h1 {
     font-weight: 300;
+    font-size: 3rem;
     text-align: center;
-    letter-spacing: 15px;
-    margin-bottom: 60px;
     color: var(--accent-color);
-    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    width: 100%;
 }
 
-/* Поле ввода новой задачи */
+/* Енгізу жолағы */
 .new-todo {
     width: 100%;
-    background: transparent;
+    padding: 16px 20px;
+    font-size: 1.1rem;
     border: none;
-    border-bottom: 1px solid var(--accent-border);
-    padding: 15px 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
     outline: none;
-    transition: var(--transition-royal);
+    font-family: inherit;
 }
 
 .new-todo::placeholder {
-    color: rgba(255, 255, 255, 0.1);
-    letter-spacing: 3px;
-    font-style: normal;
-    font-size: 0.8rem;
-    text-transform: uppercase;
+    font-style: italic;
+    color: var(--text-muted);
+    opacity: 0.5;
 }
 
-.new-todo:focus {
-    border-bottom-color: var(--accent-color);
-    padding-left: 15px;
-}
-
-/* Список дел */
+/* Тапсырмалар тізімі */
 .todo-list {
-    margin-top: 40px;
     list-style: none;
 }
 
 .todo-item {
     display: flex;
     align-items: center;
-    padding: 25px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    transition: var(--transition-royal);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.2s ease;
 }
 
 .todo-item:hover {
-    background: var(--accent-soft);
-    padding-left: 15px;
+    background-color: #fcfcfc;
 }
 
-/* Минималистичный чекбокс */
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+/* Checkbox стилі */
 .toggle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
     appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 1px solid var(--accent-border);
-    margin-right: 25px;
     cursor: pointer;
-    position: relative;
-    transition: var(--transition-royal);
+    margin-right: 15px;
+    transition: all 0.2s;
 }
 
 .toggle:checked {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: var(--success);
+    border-color: var(--success);
 }
 
-.todo-item label {
-    font-weight: 200;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: var(--transition-royal);
+/* Тапсырма мәтіні */
+.todo-label {
+    flex: 1;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-.todo-item.completed label {
-    color: var(--text-secondary);
+.completed .todo-label {
+    color: var(--text-muted);
     text-decoration: line-through;
-    opacity: 0.3;
 }
 
-/* Кнопка удаления */
+/* Өшіру батырмасы */
 .destroy {
-    margin-left: auto;
-    background: transparent;
+    background: none;
     border: none;
-    color: var(--text-secondary);
-    font-family: 'Montserrat';
-    font-weight: 100;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
+    color: #ef4444;
     opacity: 0;
-    transition: var(--transition-royal);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: opacity 0.2s ease;
 }
 
 .todo-item:hover .destroy {
-    opacity: 1;
+    opacity: 0.6;
 }
 
-/* Футер приложения */
+.destroy:hover {
+    opacity: 1 !important;
+}
+
+/* Төменгі панель (Footer) */
 .footer {
-    margin-top: 50px;
+    padding: 10px 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-secondary);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 30px;
+    background: #fafafa;
+    border-top: 1px solid var(--border-color);
 }
 
+/* Фильтрлер */
 .filters {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     list-style: none;
 }
 
-.filters a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    transition: var(--transition-royal);
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
+.filters button {
+    background: none;
+    border: 1px solid transparent;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: inherit;
+    font-size: inherit;
 }
 
-.filters a:hover,
-.filters a.selected {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
+.filters button.selected {
+    border-color: var(--accent-color);
 }
 
 .clear-completed {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
     cursor: pointer;
-    transition: var(--transition-royal);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    text-decoration: underline;
 }
 
 .clear-completed:hover {
-    color: #ff4d4d;
-}
-
-/* Тонкий скроллбар */
-::-webkit-scrollbar {
-    width: 2px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent-border);
+    color: var(--text-main);
 }
