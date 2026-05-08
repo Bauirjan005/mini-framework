@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Task Management</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="./app/styles.css">
+    <title>Mini-Framework TodoMVC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2563eb; --text: #1e293b; --border: #e2e8f0; }
+        body { background: #f8fafc; font-family: 'Inter', sans-serif; color: var(--text); display: flex; justify-content: center; margin: 0; }
+        #app { width: 100%; max-width: 550px; margin-top: 80px; padding: 0 20px; }
+        h1 { font-size: 80px; font-weight: 300; text-align: center; color: var(--primary); opacity: 0.2; margin: 0; }
+        .todoapp { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid var(--border); }
+        .new-todo { width: 100%; padding: 18px 20px 18px 60px; border: none; font-size: 18px; outline: none; border-bottom: 1px solid var(--border); box-sizing: border-box; }
+        .todo-list { list-style: none; padding: 0; margin: 0; }
+        .todo-list li { position: relative; border-bottom: 1px solid var(--border); display: flex; align-items: center; transition: 0.2s; }
+        .todo-list li:last-child { border-bottom: none; }
+        .view { display: flex; align-items: center; width: 100%; padding: 12px 15px; }
+        .toggle { width: 30px; height: 30px; margin-right: 15px; cursor: pointer; accent-color: var(--primary); }
+        label { flex: 1; font-size: 18px; transition: color 0.3s; cursor: pointer; }
+        .completed label { color: #cbd5e1; text-decoration: line-through; }
+        .destroy { color: #f87171; background: none; border: none; font-size: 24px; cursor: pointer; opacity: 0; transition: 0.2s; padding: 0 10px; }
+        li:hover .destroy { opacity: 1; }
+        .edit { display: none; width: 100%; padding: 14px 15px 14px 60px; font-size: 18px; border: 1px solid var(--primary); outline: none; box-sizing: border-box; }
+        li.editing .edit { display: block; }
+        li.editing .view { display: none; }
+        .footer { padding: 10px 15px; color: #64748b; font-size: 14px; text-align: left; border-top: 1px solid var(--border); background: #fcfcfc; }
+    </style>
 </head>
-
 <body>
-
     <div id="app"></div>
-
-    <script type="module" src="./app/main.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,9 @@
+body { background: #f5f5f5; font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+#app { background: white; width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 25px; border-radius: 12px; }
+h1 { text-align: center; color: #e91e63; font-size: 50px; margin-bottom: 20px; font-weight: 200; }
+input { width: 100%; padding: 12px; font-size: 16px; border: 2px solid #eee; border-radius: 6px; box-sizing: border-box; outline: none; transition: border 0.3s; }
+input:focus { border-color: #e91e63; }
+ul { padding: 0; margin-top: 20px; }
+li { list-style: none; padding: 12px; border-bottom: 1px solid #f9f9f9; display: flex; justify-content: space-between; align-items: center; }
+.destroy { color: #ff5252; cursor: pointer; border: 1px solid #ff5252; border-radius: 4px; background: none; padding: 2px 8px; font-size: 14px; }
+.destroy:hover { background: #ff5252; color: white; }
